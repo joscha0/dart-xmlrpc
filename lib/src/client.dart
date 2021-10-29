@@ -48,7 +48,7 @@ Future call(
   final response =
       await post(url, headers: _headers, body: xml, encoding: encoding);
   if (response.statusCode != 200) throw response;
-  final body = utf8.decode(response.bodyBytes);
+  final body = encoding.decode(response.bodyBytes);
   final value = decodeResponse(XmlDocument.parse(body), decodeCodecs);
   if (value is Fault) {
     throw value;
